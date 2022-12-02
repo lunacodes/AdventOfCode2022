@@ -1,6 +1,6 @@
 from pathlib import Path
 
-input_file: Path = Path("input.txt")
+input_file: Path = Path("input/day1_input.txt")
 
 
 def find_largest_calories(input: Path) -> int:
