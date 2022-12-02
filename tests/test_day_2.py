@@ -31,6 +31,7 @@ class TestCase:
         assert player == expect_player
 
     def test_convert_letters_to_points(self):
+        """Convert the player/enemy moves into points, to total later."""
         enemy = ["A", "A", "A", "B", "A", "C", "C"]
         player = ["X", "X", "Z", "X", "X", "Z", "Y"]
         move_values = {"A": 1, "X": 1, "B": 2, "Y": 2, "C": 3, "Z": 3}
@@ -40,7 +41,8 @@ class TestCase:
         assert enemy_points == [1, 1, 1, 2, 1, 3, 3]
         assert player_points == [1, 1, 3, 1, 1, 3, 2]
 
-    def test_calculate_round_winner(self):
+    def test_calculate_match_results(self):
+        """Calculate each match's Win/Lose/Draw points for each player."""
         # 4 conditions in RPS are:
         # tie, rock > scissors, paper > rock, scissors > paper
         # 0 Lose, 3 Draw, 6 Win
@@ -65,7 +67,18 @@ class TestCase:
 
         assert scores == [[3, 3], [3, 3], [6, 0], [6, 0], [3, 3]]
 
-    def test_player_totals_per_round(self):
+    def test_player_totals_for_all_matches(self):
+        """Calculate total sum of each player's match points."""
+        scores = [[3, 3], [3, 3], [6, 0], [6, 0], [3, 3]]
+
+        e_match_total = sum([i[0] for i in scores])
+        p_match_total = sum([i[1] for i in scores])
+
+        assert e_match_total == 21
+        assert p_match_total == 9
+
+    def test_player_total_scores_correct(self):
+        """Calculate final total scores for both players."""
         enemy_move_points = [1, 1, 1, 2, 1]
         player_move_points = [1, 1, 3, 1, 1]
         scores = [[3, 3], [3, 3], [6, 0], [6, 0], [3, 3]]
@@ -73,9 +86,5 @@ class TestCase:
         e_total = sum(enemy_move_points) + sum([i[0] for i in scores])
         p_total = sum(player_move_points) + sum([i[1] for i in scores])
 
-        assert sum(enemy_move_points) == 6
-        assert sum([i[0] for i in scores]) == 21
         assert e_total == 27
-        assert sum(player_move_points) == 7
-        assert sum([i[1] for i in scores]) == 9
         assert p_total == 16
