@@ -59,7 +59,7 @@ class TestCase:
             "AY": [0, 6],
             # S > P
             "CY": [6, 0],
-            "ZB": [0, 6],
+            "BZ": [0, 6],
         }
 
         moves = [i.replace(" ", "") for i in self.moves]
