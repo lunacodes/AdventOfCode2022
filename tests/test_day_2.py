@@ -32,18 +32,12 @@ class TestCase:
         assert enemy == expect_enemy
         assert player == expect_player
 
-    def test_calculate_round_scores(self):
-        enemy = ["A", "A", "A", "B", "A", "C", "C"]
-        player = ["X", "X", "Z", "X", "X", "Z", "Y"]
-
     def test_convert_letters_to_points(self):
         enemy = ["A", "A", "A", "B", "A", "C", "C"]
         player = ["X", "X", "Z", "X", "X", "Z", "Y"]
-        abc_chart = {"A": 1, "B": 2, "C": 3}
-        xyz_chart = {"X": 1, "Y": 2, "Z": 3}
-
-        enemy_points = [abc_chart[i] for i in enemy]
-        player_points = [xyz_chart[i] for i in player]
+        move_values = {"A": 1, "X": 1, "B": 2, "Y": 2, "C": 3, "Z": 3}
+        enemy_points = [move_values[i] for i in enemy]
+        player_points = [move_values[i] for i in player]
 
         assert enemy_points == [1, 1, 1, 2, 1, 3, 3]
         assert player_points == [1, 1, 3, 1, 1, 3, 2]
