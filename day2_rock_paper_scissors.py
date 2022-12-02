@@ -16,6 +16,9 @@ input = Path("input/day2_input.txt")
 #
 # Player Total: 15
 # Enemy Total: 15
+#
+# Note: the exercise only requires the player's score.
+# I thought it made sense to calculate the enemy's score as well.
 
 
 def calculate_rps_player_score(input: Path) -> int:

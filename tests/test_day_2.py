@@ -1,6 +1,7 @@
 from pathlib import Path
 
-input = Path("../input/day_2_input.txt")
+dir = Path().resolve()
+input = Path(dir, "input/day2_input.txt")
 
 
 class TestCase:
@@ -11,14 +12,11 @@ class TestCase:
     def test_input_is_read_correctly(self):
         """Rows are read correctly"""
         with open(input, "r") as f:
-            while True:
-                line1 = f.readline()
-                line2 = f.readline()
-                if not line2:
-                    break
-
-        assert line1 == "A X"
-        assert line2 == "A X"
+            all_moves: list[str] = f.readlines()
+        # Remove the unnecessary whitespace, between the letters
+        all_moves = [i.strip("\n").replace(" ", "") for i in all_moves]
+        assert all_moves[0] == "AX"
+        assert all_moves[3] == "BX"
 
     def test_create_player_and_enemy_arrays(self):
         """Separate rows into arrays for players"""
