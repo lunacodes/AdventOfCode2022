@@ -47,5 +47,6 @@ def sum_badge_type_priorities(input: Path) -> int:
     return sum(priority_values)
 
 
-sum_common_items_priorities(input)
-sum_badge_type_priorities(input)
+if __name__ == "main":
+    sum_common_items_priorities(input)
+    sum_badge_type_priorities(input)
