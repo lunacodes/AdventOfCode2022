@@ -1,22 +1,7 @@
 from pathlib import Path
 
-input = Path("input/day2_input.txt")
+input = Path("day2/day2_input.txt")
 
-# Details:
-# total_score = sum(scores_per_match)
-# score_per_match = player_move + outcome
-#   Moves:    1 Rock, 2 Paper, 3 Scissors
-#   Outcomes: 0 Lose, 3 Draw, 6 Win
-#
-# Sample Data (each line is a match):
-# Enemey         | Player          | Enemy Score | Player Score | Winner
-# A (Rock 1)     | Y (Paper 2)     |  1 (1, 0)   |  8 (2, 6)    | Player
-# B (Paper 2)    | X (Rock 1)      |  8 (2, 6)   |  1 (1, 0)    | Enemy
-# C (Scissors 3) | Z (Scissiors 3) |  6          | 6            | Draw
-#
-# Player Total: 15
-# Enemy Total: 15
-#
 # Note: the exercise only requires the player's score.
 # I thought it made sense to calculate the enemy's score as well.
 
@@ -75,4 +60,5 @@ def calculate_rps_player_score(input: Path) -> int:
     return player_total
 
 
-calculate_rps_player_score(input)
+if __name__ == "main":
+    calculate_rps_player_score(input)
